@@ -1,56 +1,50 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
 package com.mycompany.Penyewaanlapangan;
 
-/**
-*
-*  @author user
-*
-*/
 
 class Lapangan {
 
-    // Field private
+    
     private String namaLapangan;
     private String jenisLapangan;
     private int hargaSewa;
 
-    // Constructor
+    
     Lapangan(String namaLapangan, String jenisLapangan, int hargaSewa) {
         this.namaLapangan = namaLapangan;
         this.jenisLapangan = jenisLapangan;
         this.hargaSewa = hargaSewa;
     }
 
-    // Getter namaLapangan
+    
     public String getNamaLapangan() {
         return namaLapangan;
     }
 
-    // Setter namaLapangan
+    
     public void setNamaLapangan(String namaLapangan) {
         this.namaLapangan = namaLapangan;
     }
 
-    // Getter jenisLapangan
+    
     public String getJenisLapangan() {
         return jenisLapangan;
     }
 
-    // Setter jenisLapangan
+    
     public void setJenisLapangan(String jenisLapangan) {
         this.jenisLapangan = jenisLapangan;
     }
 
-    // Getter hargaSewa
+    
     public int getHargaSewa() {
         return hargaSewa;
     }
 
-    // Setter hargaSewa dengan validasi
+    
     public void setHargaSewa(int hargaSewa) {
         if (hargaSewa > 0) {
             this.hargaSewa = hargaSewa;
@@ -63,6 +57,20 @@ class Lapangan {
         System.out.println("Nama Lapangan : " + namaLapangan);
         System.out.println("Jenis         : " + jenisLapangan);
         System.out.println("Harga Sewa    : Rp" + hargaSewa);
+    }
+}
+
+class LapanganFutsal extends Lapangan {
+
+    LapanganFutsal(String namaLapangan, String jenisLapangan, int hargaSewa) {
+        super(namaLapangan, jenisLapangan, hargaSewa);
+    }
+}
+
+class LapanganBadminton extends Lapangan {
+
+    LapanganBadminton(String namaLapangan, String jenisLapangan, int hargaSewa) {
+        super(namaLapangan, jenisLapangan, hargaSewa);
     }
 }
 
@@ -79,7 +87,7 @@ public class Penyewaanlapangan {
                 "Lapangan B", "Badminton", 50000
         );
 
-        System.out.println("=== DATA AWAL LAPANGAN ===");
+        System.out.println("DATA AWAL LAPANGAN");
         lapangan1.tampilkanInfo();
 
         System.out.println();
@@ -90,7 +98,7 @@ public class Penyewaanlapangan {
         System.out.println("Harga sewa: Rp" + lapangan1.getHargaSewa());
 
         
-        System.out.println("\n=== PERUBAHAN DATA ===");
+        System.out.println("\nPERUBAHAN DATA");
 
         
         lapangan1.setHargaSewa(120000);
@@ -100,7 +108,23 @@ public class Penyewaanlapangan {
         
         lapangan1.setHargaSewa(-50000);
 
-        System.out.println("\n=== DATA AKHIR ===");
+        System.out.println("\nDATA AKHIR");
         lapangan1.tampilkanInfo();
+
+        System.out.println("\nINHERITANCE");
+
+        LapanganFutsal futsal = new LapanganFutsal(
+                "Lapangan Futsal", "Futsal", 100000
+        );
+
+        LapanganBadminton badminton = new LapanganBadminton(
+                "Lapangan Badminton", "Badminton", 50000
+        );
+
+        futsal.tampilkanInfo();
+
+        System.out.println();
+
+        badminton.tampilkanInfo();
     }
 }
