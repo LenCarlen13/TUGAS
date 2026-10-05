@@ -1,4 +1,10 @@
+com\mycompany\Penyewaanlapangan\BadmintonAbstrak.class
 com\mycompany\Penyewaanlapangan\LapanganFutsal.class
 com\mycompany\Penyewaanlapangan\Lapangan.class
+com\mycompany\Penyewaanlapangan\FutsalAbstrak.class
 com\mycompany\Penyewaanlapangan\LapanganBadminton.class
+com\mycompany\Penyewaanlapangan\LapanganAbstrak.class
+com\mycompany\Penyewaanlapangan\ProsesSewa.class
+com\mycompany\Penyewaanlapangan\LapanganSewa.class
+com\mycompany\Penyewaanlapangan\BisaDisewa.class
 com\mycompany\Penyewaanlapangan\Penyewaanlapangan.class

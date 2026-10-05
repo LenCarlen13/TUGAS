@@ -74,6 +74,90 @@ class LapanganBadminton extends Lapangan {
     }
 }
 
+
+abstract class LapanganAbstrak {
+
+    protected String nama;
+
+    LapanganAbstrak(String nama) {
+        this.nama = nama;
+    }
+
+    abstract void tampilkanJenis();
+
+    void tampilkanNama() {
+        System.out.println("Nama Lapangan : " + nama);
+    }
+}
+
+
+class FutsalAbstrak extends LapanganAbstrak {
+
+    FutsalAbstrak(String nama) {
+        super(nama);
+    }
+
+    @Override
+    void tampilkanJenis() {
+        System.out.println("Jenis Lapangan : Futsal");
+    }
+}
+
+
+class BadmintonAbstrak extends LapanganAbstrak {
+
+    BadmintonAbstrak(String nama) {
+        super(nama);
+    }
+
+    @Override
+    void tampilkanJenis() {
+        System.out.println("Jenis Lapangan : Badminton");
+    }
+}
+
+
+interface BisaDisewa {
+
+    void prosesSewa();
+
+    default void tampilkanStatus() {
+        System.out.println("Lapangan dapat disewa.");
+    }
+}
+
+
+class LapanganSewa extends LapanganAbstrak implements BisaDisewa {
+
+    LapanganSewa(String nama) {
+        super(nama);
+    }
+
+    @Override
+    void tampilkanJenis() {
+        System.out.println("Jenis Lapangan : Lapangan Sewa");
+    }
+
+    @Override
+    public void prosesSewa() {
+        System.out.println("Lapangan sedang disewa.");
+    }
+}
+
+
+class ProsesSewa {
+
+    void sewa(String namaLapangan) {
+        System.out.println("Menyewa " + namaLapangan);
+    }
+
+    void sewa(String namaLapangan, int lamaSewa) {
+        System.out.println("Menyewa " + namaLapangan + " selama "
+                + lamaSewa + " jam.");
+    }
+}
+
+
 public class Penyewaanlapangan {
 
     public static void main(String[] args) {
@@ -126,5 +210,58 @@ public class Penyewaanlapangan {
         System.out.println();
 
         badminton.tampilkanInfo();
+
+
+        System.out.println("\nABSTRACT CLASS");
+
+        LapanganAbstrak lapanganFutsal = new FutsalAbstrak(
+                "Lapangan Futsal A"
+        );
+
+        LapanganAbstrak lapanganBadminton = new BadmintonAbstrak(
+                "Lapangan Badminton A"
+        );
+
+        lapanganFutsal.tampilkanNama();
+        lapanganFutsal.tampilkanJenis();
+
+        System.out.println();
+
+        lapanganBadminton.tampilkanNama();
+        lapanganBadminton.tampilkanJenis();
+
+
+        System.out.println("\nINTERFACE");
+
+        LapanganSewa lapanganSewa = new LapanganSewa(
+                "Lapangan Sewa A"
+        );
+
+        lapanganSewa.tampilkanNama();
+        lapanganSewa.tampilkanJenis();
+        lapanganSewa.prosesSewa();
+        lapanganSewa.tampilkanStatus();
+
+
+        System.out.println("\nPOLYMORPHISM");
+
+        LapanganAbstrak[] daftarLapangan = {
+            new FutsalAbstrak("Lapangan Futsal B"),
+            new BadmintonAbstrak("Lapangan Badminton B")
+        };
+
+        for (LapanganAbstrak lapangan : daftarLapangan) {
+            lapangan.tampilkanNama();
+            lapangan.tampilkanJenis();
+            System.out.println();
+        }
+
+
+        System.out.println("METHOD OVERLOADING");
+
+        ProsesSewa proses = new ProsesSewa();
+
+        proses.sewa("Lapangan Futsal");
+        proses.sewa("Lapangan Badminton", 2);
     }
 }
